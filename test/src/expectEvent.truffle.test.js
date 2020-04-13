@@ -118,6 +118,10 @@ contract('expectEvent (truffle contracts)', function ([deployer]) {
           expectEvent(this.receipt, 'ShortUint', { value: new BN(this.value) });
         });
 
+        it('accepts emitted events with correct value as string', function () {
+          expectEvent(this.receipt, 'ShortUint', { value: this.value.toString() });
+        });
+
         it('throws if an emitted event with correct JavaScript number is requested', function () {
           expect(() => expectEvent(this.receipt, 'ShortUint', { value: this.value })).to.throw();
         });
